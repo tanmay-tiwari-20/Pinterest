@@ -1,0 +1,174 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Dubai";
+}
+
+body {
+  background-color: #dadada;
+}
+
+.container {
+  background-color: white;
+  width: 480px;
+  position: absolute;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.5);
+  padding: 5px 0;
+}
+
+.content {
+  width: 56%;
+  margin: auto;
+  text-align: center;
+}
+
+.img1 {
+  width: 70px;
+  position: relative;
+  top: 10px;
+}
+
+.header {
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  line-height: .9;
+}
+
+.detail {
+  width: 100%;
+  height: 48px;
+  margin: 5px 0;
+  padding: 12px 15px;
+  font-size: 15px;
+  color: #333;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.detail:focus {
+  border-color: #0073e6;
+  box-shadow: 0 0 8px rgba(0, 115, 230, 0.3);
+  outline: none;
+}
+
+h4 {
+  font-size: 13px;
+  font-weight: 700;
+  position: relative;
+  left: -60px;
+  margin: 2px;
+}
+
+.btn {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  margin: 7px 0px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.int {
+  background-color: #e60023;
+  color: #fff;
+}
+
+.int:hover {
+  background-color: #cc001f;
+}
+
+.or {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 10px 0;
+  color: #666;
+  position: relative;
+}
+
+.or::before,
+.or::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background-color: #ddd;
+}
+
+.or::before {
+  left: 0;
+}
+
+.or::after {
+  right: 0;
+}
+
+.fbk {
+  background-color: #4267b2;
+  color: #fff;
+}
+
+.fbk a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+}
+
+.fbk:hover {
+  background-color: #365899;
+}
+
+.ggl {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.ggl a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+}
+
+
+.ggl:hover {
+  background-color: #e0e0e0;
+}
+
+footer p {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+footer a {
+  text-decoration: underline;
+  color: #000;
+}
+
+p:last-child {
+  opacity: 1;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.error{
+  font-weight: 500;
+  color: red;
+  text-transform: capitalize;
+  margin: 7px;
+}
