@@ -7,20 +7,18 @@ const PostSchema = new Schema(
       type: String,
       trim: true,
     },
+    description: String,
     image: {
       type: String,
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
+      index: true,
     },
     dateTime: {
       type: Date,
       default: Date.now,
-    },
-    likes: {
-      type: Array,
-      default: [],
     },
   },
   {

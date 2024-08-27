@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pinterest | Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -13,8 +14,11 @@
         <!-- Profile Header -->
         <div class="bg-white shadow-md">
             <div class="max-w-6xl mx-auto p-8 flex items-center">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fHBvcnRyYWl0fGVufDB8fDB8fHww"
-                    alt="Profile Picture" class="w-36 h-36 rounded-full mr-8 object-cover">
+                <form id="uploadform" hidden action="/fileupload" method="post" enctype="multipart/form-data">
+                    <input type="file" name="image">
+                </form>
+                <img src="/images/uploads/<%= user.dp %>" alt="Profile Image"
+                    class="w-36 h-36 rounded-full mr-8 object-cover border-gray-200 border-2">
                 <div>
                     <h2 class="text-3xl font-bold">
                         <%= user.fullname %>
@@ -22,25 +26,21 @@
                     <h2 class="text-gray-600 mt-2 text-base">@<%= user.username %>
                     </h2>
                     <p class="text-gray-600 mt-2 text-base">X boards · X followers · X following</p>
-                    <button class="mt-4 px-5 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 text-base">
+                    <button id="uploadbutt"
+                        class="mt-4 px-5 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 text-base">
                         Edit Profile
                     </button>
                 </div>
             </div>
             <div class="border-t border-gray-200 mt-4">
-                <div class="max-w-7xl mx-auto flex justify-between py-4">
-                    <div class="flex space-x-8">
-                        <a href="#" class="text-gray-600 hover:text-black font-semibold text-base">Created</a>
-                        <a href="#" class="text-gray-600 hover:text-black font-semibold text-base">Saved</a>
+                <div class="max-w-7xl mx-auto flex items-center justify-between py-4">
+                    <div class="flex space-x-9">
+                        <a href="/feed"
+                            class="px-5 py-2 bg-gray-100 text-gray-600 rounded-full hover:bg-gray-200 text-base">Feed</a>
                     </div>
-                    <button class="px-5 py-2 bg-gray-100 text-gray-600 rounded-full hover:bg-gray-200 text-base">
-                        + Add Section
-                    </button>
-                    <form action="/upload" method="post" enctype="multipart/form-data">
-                        <input type="text" name="filecaption" placeholder="Some Caption">
-                        <input type="file" name="file">
-                        <button type="submit">Upload</button>
-                    </form>
+                    <a href="/add" class="px-5 py-2 bg-gray-100 text-gray-600 rounded-full hover:bg-gray-200 text-base">
+                        + Add New Post
+                    </a>
                     <a href="/logout" class="px-5 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 text-base">
                         Logout
                     </a>
@@ -54,18 +54,33 @@
             <div class="flex flex-wrap gap-6 items-start">
                 <!-- Pin Item -->
                 <% user.posts.forEach(function(post) { %>
-                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 w-72">
-                    <img src="/images/uploads/<%= post.image %>" alt="Pin Image" class="w-full object-contain">
-                    <div class="p-4">
-                        <p class="text-gray-600 text-sm mt-2"><%= post.imageText %></p>
+                    <div
+                        class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 w-72">
+                        <img src="/images/uploads/<%= post.image %>" alt="Pin Image" class="w-full object-contain">
+                        <div class="px-3 py-2">
+                            <h1 class="text-base font-semibold">
+                                <%= post.imageText %>
+                            </h1>
+                            <p class="text-gray-800 text-sm mt-1">
+                                <%= post.description %>
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <% }); %>
-                <!-- Repeat Pin Item for each pin -->
-                <!-- More Pin Items... -->
+                    <% }); %>
+                        <!-- Repeat Pin Item for each pin -->
+                        <!-- More Pin Items... -->
             </div>
         </div>
     </div>
+    <script>
+        document.querySelector("#uploadbutt").addEventListener("click", function () {
+            document.querySelector("#uploadform input").click()
+        })
+
+        document.querySelector("#uploadform input").addEventListener("change", function () {
+            document.querySelector("#uploadform").submit()
+        })
+    </script>
 </body>
 
 </html>

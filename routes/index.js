@@ -15,8 +15,14 @@ router.get("/login", function (req, res) {
   res.render("login", { error: req.flash("error") });
 });
 
-router.get("/feed", function (req, res, next) {
-  res.render("feed");
+router.get("/feed", async function (req, res, next) {
+  try {
+    const posts = await postModel.find({}).populate("user").exec(); // Fetch all posts
+    res.render("feed", { posts }); // Pass posts to the template
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
 });
 
 router.post(
@@ -35,6 +41,7 @@ router.post(
       image: req.file.filename, // Ensure this matches the multer configuration
       imageText: req.body.filecaption,
       user: user._id,
+      description: req.body.description,
     });
 
     user.posts.push(postdata._id); // This was mistakenly written as 'post._id'
@@ -51,6 +58,25 @@ router.get("/profile", isLoggedIn, async function (req, res, next) {
     })
     .populate("posts");
   res.render("profile", { user });
+});
+router.post(
+  "/fileupload",
+  isLoggedIn,
+  upload.single("image"),
+  async function (req, res, next) {
+    const user = await userModel.findOne({
+      username: req.session.passport.user,
+    });
+    user.dp = req.file.filename;
+    await user.save();
+    res.redirect("/profile");
+  }
+);
+router.get("/add", isLoggedIn, async function (req, res, next) {
+  const user = await userModel.findOne({
+    username: req.session.passport.user,
+  });
+  res.render("add", { user });
 });
 
 router.post("/register", function (req, res, next) {
