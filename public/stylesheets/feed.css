@@ -28,6 +28,12 @@ img:hover {
     display: inline;
 }
 
+@media(min-width: 300px) {
+    .grid-item {
+        width: 33.333%;
+    }
+}
+
 @media (min-width: 500px) {
     .grid-item {
         width: 50%;

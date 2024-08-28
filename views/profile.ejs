@@ -20,30 +20,30 @@
                     <input type="file" name="image">
                 </form>
                 <img src="/images/uploads/<%= user.dp %>" alt="Profile Image"
-                    class="w-36 h-36 rounded-full mr-8 object-cover border-gray-200 border-2">
+                    class="lg:w-36 lg:h-36 w-24 h-24 rounded-full mr-8 object-cover border-gray-200 border-2">
                 <div>
-                    <h2 class="text-3xl font-bold">
+                    <h2 class="lg:text-3xl text-base font-bold">
                         <%= user.fullname %>
                     </h2>
-                    <h2 class="text-gray-600 mt-2 text-base">@<%= user.username %>
+                    <h2 class="text-gray-600 mt-1 lg:mt-2 text-sm lg:text-base">@<%= user.username %>
                     </h2>
-                    <p class="text-gray-600 mt-2 text-base">X boards · X followers · X following</p>
+                    <!-- <p class="text-gray-600 mt-2 text-base">X boards · X followers · X following</p> -->
                     <button id="uploadbutt"
-                        class="mt-4 px-5 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 text-base">
+                        class="lg:mt-4 mt-3 lg:px-5 lg:py-2 px-3 py-1 bg-red-600 text-white rounded-full hover:bg-red-700 text-sm lg:text-base">
                         Edit Profile
                     </button>
                 </div>
             </div>
-            <div class="border-t border-gray-200 mt-4">
+            <div class="border-t border-gray-200 mt-2 lg:mt-4 lg:p-0 px-3">
                 <div class="max-w-7xl mx-auto flex items-center justify-between py-4">
                     <div class="flex space-x-9">
                         <a href="/feed"
-                            class="px-5 py-2 bg-gray-100 text-gray-600 rounded-full hover:bg-gray-200 text-base">Feed</a>
+                            class="lg:px-5 lg:py-2 px-3 py-1 bg-gray-100 text-gray-600 rounded-full hover:bg-gray-200 text-sm lg:text-base">Feed</a>
                     </div>
-                    <a href="/add" class="px-5 py-2 bg-gray-100 text-gray-600 rounded-full hover:bg-gray-200 text-base">
+                    <a href="/add" class="lg:px-5 lg:py-2 px-3 py-1 bg-gray-100 text-gray-600 rounded-full hover:bg-gray-200 text-sm lg:text-base">
                         + Add New Post
                     </a>
-                    <a href="/logout" class="px-5 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 text-base">
+                    <a href="/logout" class="lg:px-5 lg:py-2 px-3 py-1 bg-red-600 text-white rounded-full hover:bg-red-700 text-sm lg:text-base">
                         Logout
                     </a>
                 </div>
@@ -51,13 +51,13 @@
         </div>
 
         <!-- Pins Section -->
-        <div class="max-w-7xl mx-auto mt-8 px-6 py-4">
-            <h3 class="text-2xl font-bold mb-4">Created Pins</h3>
+        <div class="max-w-7xl mx-auto mt-4 lg:mt-8 px-6 py-4">
+            <h3 class="lg:text-2xl text-xl font-bold mb-4">Created Pins</h3>
             <div class="flex flex-wrap gap-6 items-start">
                 <!-- Pin Item -->
                 <% user.posts.forEach(function(post) { %>
                     <div
-                        class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 w-72">
+                        class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 lg:w-72">
                         <img src="/images/uploads/<%= post.image %>" alt="Pin Image" class="w-full object-contain">
                         <div class="px-3 py-2">
                             <h1 class="text-base font-semibold">
