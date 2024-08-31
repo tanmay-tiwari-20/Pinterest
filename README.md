@@ -16,7 +16,6 @@ This project is a clone of Pinterest, built with Express, MongoDB, Mongoose.js, 
 - **Frontend**: EJS
 - **Other Tools**:
   - **Flash Messages**: For handling user notifications and errors.
-
 ## 🚀 Usage
 
 - **User Authentication**: Sign up, log in, and manage your profile.
