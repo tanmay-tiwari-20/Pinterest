@@ -22,7 +22,7 @@ This project is a clone of Pinterest, built with Express, MongoDB, Mongoose.js, 
 - **User Authentication**: Sign up, log in, and manage your profile.
 - **Post Management**: Upload, view, and manage posts on your profile.
 - **Feed Exploration**: Browse posts from other users in the feed page.
-- 
+
 ## 📜 License
 
 This project is open-source and available under the MIT License.
